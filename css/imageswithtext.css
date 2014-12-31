@@ -1,0 +1,169 @@
+/*--------------------------------------------------------*/
+/*GENERAL FORMAT*/
+/*--------------------------------------------------------*/
+html, body {
+  display:none
+  background-color: white;
+  font-family: Quattrocento, Helvetica;
+  font-size: 95%;
+  color: #white;
+  width: 100%;
+  height: 100%;
+}
+
+@font-face {
+  font-family: Nexa;
+  src: url('../fonts/Nexa-Light.otf');
+  font-weight: normal;
+}
+@font-face {
+  font-family: Nexa;
+  src: url('../fonts/Nexa-Bold.otf');
+  font-weight: bold;
+}
+@font-face {
+  font-family:Quattrocento;
+  src: url('../fonts/Quattrocento-Regular.otf');
+}
+
+h1{
+  font-size: 170%;
+  font-weight: bold;
+  text-align: left;
+  line-height: 1.4em;
+  color: #181818;
+}
+
+body {
+  overflow:hidden;
+}
+
+.text-large{
+  font-size: 170%;
+  font-weight: bold;
+  text-align: left;
+  line-height: 1.4em;
+  color: #181818;
+
+}
+.text-tiny{
+  font-size: 65%;
+  font-family: Quattrocento, Helvetica;
+}
+/*---------*/
+
+.text-content{
+	color: white;
+	font-family: "Arial Black", Gadget, sans-serif;
+	letter-spacing: 3px;
+	font-weight: normal;
+	font-size: 18px;
+
+}
+ul.img-list {
+  list-style-type: none;
+  text-align: center;
+}
+
+ul.img-list li {
+  overflow: hidden;
+  display: inline-block;
+  height: 300px;
+  margin: 0 1em 1em 0;
+  position: relative;
+  width: 150px;
+}
+span.text-content {
+  background: rgba(255,255,255,0.7);
+  color: black;
+  cursor: pointer;
+  display: table;
+  height: 302px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 152px;
+}
+ 
+span.text-content span {
+  display: table-cell;
+  text-align: center;
+  vertical-align: middle;
+}
+
+#cascade1 {
+  -webkit-animation-name: drop1;
+  -webkit-animation-duration: 1s;
+}
+
+#cascade2 {
+  body{
+    display:none;
+  }
+  -webkit-animation-name: drop2;
+  -webkit-animation-duration: 1s;
+}
+
+#cascade3 {
+  -webkit-animation-name: drop3;
+  -webkit-animation-duration: 1s;
+}
+
+.hyphen {
+	color: white;
+  -webkit-animation-name: appear;
+  -webkit-animation-duration: 2s;
+}
+
+/*--------------------------------------------------------*/
+/*Verical Centering*/
+/*--------------------------------------------------------*/
+
+#card {
+  clear:both;
+  width: 600px;
+  padding-bottom: 40px;
+  margin: auto;
+}
+
+#verticalcentering {
+  float:left;
+  height:40%;
+  margin-bottom:-100px;
+}
+
+
+/*--------------------------------------------------------*/
+/*LINKS*/
+/*--------------------------------------------------------*/
+
+a, a:visited{
+  font: Nexa;
+  transition:color 0.4s;
+  -moz-transition:color 0.4s; /* Firefox 4 */
+  -webkit-transition:color 0.4s; /* Safari and Chrome */
+  -o-transition:color 0.4s; /* Opera */
+  color:#808080;
+  text-decoration: none;
+}
+
+a:active{
+  transition:color 0.4s;
+  -moz-transition:color 0.4s; /* Firefox 4 */
+  -webkit-transition:color 0.4s; /* Safari and Chrome */
+  -o-transition:color 0.4s; /* Opera */
+  color:white;
+}
+
+a:hover{
+	color:#111111;
+}
+
+span.text-content:hover {
+  transition-property:background .5s;
+  -webkit-transition:background .5s; /* Safari and Chrome */
+  background: rgba(0,0,0,0);
+  cursor: pointer;
+  color: white;
+}
+

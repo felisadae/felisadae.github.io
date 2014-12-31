@@ -1,0 +1,46 @@
+<html>
+	<head>
+		<link rel="stylesheet" href="css/imageswithtext.css"/>
+		<meta charset="UTF-8"/>
+		<script type="text/javascript" src="<http://code.jquery.com/jquery-1.7.2.min.js>"></script>
+		<script src="http://code.jquery.com/jquery-latest.js"></script>
+	    <!-- fade in effect for all pages : If you want to remove this function, please remove display:none from stlye.css body --> 
+	    <script> 
+	     $(document).ready(function(){ 
+			 $("body").css("display", "none");
+			 $("body").fadeIn(4000);
+	     });
+	    </script>
+	</head>
+
+	<body>
+		<span class = "text-large" id="cascade1"><a href = "index.html">LISA HUANG</a></span>
+		<span class="hyphen">
+        -
+        </span>
+		<span class = "text-tiny" id="cascade2"><a href = "index.html">BACK</a></span>
+		<div id = "verticalcentering"></div>
+		<div id = "card">
+			<ul class="img-list transition" class = "padding" >
+			  <li>
+				<a href="photography.html">
+				  <img src="photos/1.jpg" width="300" height="300" />
+				  <span class="text-content"><span> PHOTOS </span></span>
+				</a>
+			  </li>
+			  <li>
+				<a href="http://cargocollective.com/asteriosjuice/">
+				  <img src="photos/2.jpg" width="300" height="300" />
+				  <span class="text-content"><span> DESIGN</span></span>
+				</a>
+			  </li>
+			  <li>
+				<a href="http://cargocollective.com/asteriosjuice/About-HUANG-LISA/">
+				  <img src="photos/3.jpg" width="300" height="300" />
+				  <span class="text-content"><span> ABOUT ME</span></span>
+				</a>
+			  </li>
+			</ul>
+		</div>
+	</body>
+</html>
