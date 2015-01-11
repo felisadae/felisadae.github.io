@@ -54,10 +54,10 @@ body {
 
 .text-content{
 	color: white;
-	font-family: Quattrocento, Helvetica;
+	font-family: "Arial Black", Gadget, sans-serif;
 	letter-spacing: 3px;
 	font-weight: normal;
-	font-size: 8px;
+	font-size: 18px;
 
 }
 ul.img-list {
@@ -68,7 +68,7 @@ ul.img-list {
 ul.img-list li {
   overflow: hidden;
   display: inline-block;
-  height: 150px;
+  height: 300px;
   margin: 0 1em 1em 0;
   position: relative;
   width: 150px;
@@ -78,7 +78,7 @@ span.text-content {
   color: black;
   cursor: pointer;
   display: table;
-  height: 152px;
+  height: 302px;
   left: 0;
   position: absolute;
   top: 0;
@@ -128,7 +128,7 @@ span.text-content span {
 
 #verticalcentering {
   float:left;
-  height:50%;
+  height:40%;
   margin-bottom:-100px;
 }
 
@@ -163,6 +163,7 @@ span.text-content:hover {
   transition-property:background .5s;
   -webkit-transition:background .5s; /* Safari and Chrome */
   background: rgba(0,0,0,0);
-  cursor: pointer; 
+  cursor: pointer;
+  color: white;
 }
 
