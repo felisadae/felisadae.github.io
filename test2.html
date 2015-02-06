@@ -1,0 +1,72 @@
+<!DOCTYPE HTML>
+<html> 
+
+    <head>
+       <title>KPCB Application 2015</title>
+       <meta charset="utf-8">
+       <meta name="viewport" content="width=device-width, initial-scale=1">
+       <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css"> 
+       <link rel="icon" href="/images/favicon.ico" type="image/ico" sizes="16x16">
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>REIMAGING SHAZAM :: EXPLORE<h1>
+            <div class = "colored-background">
+                <div class = "col-md-4">
+                    <div class = "screenshot">
+                        <p class = "caption" id = "click">CLICK TO ADVANCE</p>
+                        <p class = "caption" id = "touch">TOUCH TO ADVANCE</p>
+                    </div> 
+                </div>
+                <div class = "col-md-8"> 
+                    <h2>Investigation</h2>
+                    <p>After a lot of trial and error, I realized that a single tap would let me view the city's top ten songs. A double tap would let me zoom in. By zooming in, I could check out the regions in more detail, and by zooming out, cities would consolidate back into their respective states, and eventually their country.</p> 
+                </div>
+            </div>
+
+            <div class = "colored-background">
+                <div class = "col-md-4">
+                    <div class = "screenshot">
+                        <p class = "caption" id = "click">CLICK TO ADVANCE</p>
+                        <p class = "caption" id = "touch">TOUCH TO ADVANCE</p>
+                    </div>
+                </div>
+                <div class = "col-md-8">
+                    <h2>Analysis</h2>
+                    <p>Then, I asked myself:
+                    Why would people want to look at this feature?
+                    I thought of two cases. People would likely ask:<br>
+                    <ol>
+                        <li>I wonder what people in Country X are listening to.</li>
+                        <li> I wonder how popular this song is in another country.</li>
+                    </ol>
+                    Wanting to test the waters, I asked five friends (admittedly a statistically insignificant sample) what they thought. Without describing the two cases, on their volition they all cited the primary use case as something akin to the first case. Indeed, the first case was also my spontaneous reaction. The second use case was sparked by the observation that many of the same albums proliferated across the map. I wanted to track the popularity of a song across different countries. I decided to try implementing this feature since it demonstrates an incredible level of connectivity across the world - of not just the album, but of how Shazam is really spreading across disparate demographics. Neat.
+                    </br>
+                    Then, I observed how my friends used the app. They would usually search for places that they had lived, cities that corresponded with people that they knew, and then the most visible locations on the map. 
+                    </br>
+                    With these use cases in mind, I started to look at the app more critically. 
+                    </br>
+                    A number of things threw me off. For one, cities seemedly appeared at random. The initial screen displayed North America, Anchorage, Guatemala, and Punta Arenas. What's odd to me is that these don't correspond to population centers. Another hypothesis was that they selected cities based on the number of Shazams. I soon discarded this, seeing cities like Anchorage and the Marshall Islands show up before places like San Francisco. It seems to me that they picked cities that were equidistant based on the area of the map, presumably because they needed room for the album covers to show up.
+                    </br>
+                    The second thing that bothered me was the ease of navigation. I had to zoom really, really close to San Antonio, TX for it to show up as an option. On top of that, when I would zoom back out, some of the cities wouldn't absorb back into their respective parent state. They'd linger on the map. Eventually, after two or three zooms, I'd be unable to read the cities at all. Viewing the songs was also clunky. I didn't want to tap the city, go through the hassle of switching to another screen, and then return to the map... and repeat the whole ordeal if I was curious about another city.
+                    </br>
+                    The final thing that left me puzzled was the album covers themselves, especially in some foreign countries. I didn't recognize many of the artists, let along the album cover.</p>
+                </div>
+            </div>
+
+            <div class = "colored-background">
+                <div class = "col-md-4">
+                    <div class = "screenshot">
+                        <p class = "caption" id = "click">CLICK TO ADVANCE</p>
+                        <p class = "caption" id = "touch">TOUCH TO ADVANCE</p>
+                    </div>
+                </div>
+                <div class = "col-md-8">
+                    <h2>My solution</h2> 
+                    <p>The first thing I wanted to do was cut out the album covers out of the map. They were an ineffective way of indicating song popularity. Additionally, in order to better facilitate comparing </p>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

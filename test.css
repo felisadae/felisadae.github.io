@@ -1,0 +1,67 @@
+/* FONTS */
+
+@font-face{
+    font-family: Bebas;
+    src: url('BebasNeue.otf');
+}
+@font-face{
+    font-family: Bebas Light;
+    src: url('BebasNeue Light.otf');
+}
+
+@font-face{
+    font-family: Geo Sans;
+    src: url('../fonts/GeosansLight.ttf');
+}
+@font-face{
+    font-family: Open Sans L;
+    src: url('../fonts/OpenSans-Light.ttf');
+}
+@font-face{
+    font-family: Open Sans R;
+    src: url('../fonts/OpenSans-Regular.ttf');
+}
+@font-face{
+    font-family: Open Sans SB;
+    src: url('../fonts/OpenSans-Semibold.ttf');
+}
+
+/* ----------- */
+/* FONT STYLES */
+/* ----------- */
+
+h1, h2, h3{
+    font-family: Bebas; 
+}
+
+h1{
+
+}
+
+h2{
+    
+}
+
+h3{ 
+    
+}
+
+/* ------------ */
+/*    IMAGES    */
+/* ------------ */
+.screenshot{
+
+}
+
+.screenshot.caption{
+    text-align: center;
+}
+
+@media screen and (max-width:755px) {
+    #touch{
+        visibility: visible;
+    }
+    #click{
+        visibility: hidden;
+    }
+}
