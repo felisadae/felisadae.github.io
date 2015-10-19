@@ -66,22 +66,20 @@ ul.img-list {
 
 ul.img-list li {
   overflow: hidden;
-  display: inline-block;
-  height: 150px;
+  display: inline-block; 
   margin: 0 1em 1em 0;
-  position: relative;
-  width: 150px;
+  position: relative; 
 }
 span.text-content {
   background: rgba(255,255,255,0.7);
   color: black;
   cursor: pointer;
   display: table;
-  height: 152px;
   left: 0;
   position: absolute;
-  top: 0;
-  width: 152px;
+  top: 0; 
+/*  height: 152px;
+  width: 152px;*/
 }
  
 span.text-content span {
@@ -163,5 +161,12 @@ span.text-content:hover {
   -webkit-transition:background .5s; /* Safari and Chrome */
   background: rgba(0,0,0,0);
   cursor: pointer; 
+}
+
+
+/*--------------------------------------------------------*/
+/*IMAGE GALLERY*/
+/*--------------------------------------------------------*/
+.thumbnail { 
 }
 
