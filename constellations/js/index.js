@@ -2,9 +2,11 @@
   var Dot, animFrame, config, dotFactory, dots, drawDot, drawLines, dynamicCanvas, mainLoop;
 
   config = {
-    largeDotSize: 9,
+    hugeDotSize: 18, 
+    largeDotSize: 14,
+    midDotSize: 12,
     smallDotSize: 5,
-    darkGrey: 'rgba(71,171,220,0.8)',
+    blue: 'rgba(71,171,220,0.8)',
     pink: 'rgba(251,111,160,0.8)',
     yellow: 'rgba(231,231,10,0.8)',
     purple: 'rgba(171,111,180,0.8)',
@@ -40,19 +42,21 @@
     while (dots.length < config.bigDots) {
       var probability = Math.random(); 
       
-      if(probability > 0.5){
-        if(probability > 0.75) {
-            if(probability > 0.9){
-              oDot = dotFactory(config.largeDotSize, config.yellow, context, canvas, 1, 1);
+      if(probability > 0.4){
+        if(probability > 0.7) {
+            if(probability > 0.8){
+              oDot = dotFactory(config.midDotSize, config.yellow, context, canvas, 1, 1);
             } else {
-              oDot = dotFactory(config.largeDotSize, config.pink, context, canvas, 1, 1);
+              oDot = dotFactory(config.midDotSize, config.pink, context, canvas, 1, 1);
             } 
         } else {
-            oDot = dotFactory(config.largeDotSize, config.purple, context, canvas, 1, 1);
+            oDot = dotFactory(config.midDotSize, config.purple, context, canvas, 1, 1);
         }  
-      } else {
-        oDot = dotFactory(config.largeDotSize, config.darkGrey, context, canvas, 1, 1);
-      } 
+      } else if (probability > 0.2) {
+        oDot = dotFactory(config.largeDotSize, config.blue, context, canvas, 1, 1); 
+      }  else{
+        oDot = dotFactory(config.hugeDotSize, config.blue, context, canvas, 1, 1); 
+      }
       dots.push(oDot);
     }
     while (dots.length < config.bigDots + config.littleDots) {
