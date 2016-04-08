@@ -1,0 +1,28 @@
+/* FONT FAMILIES */
+      @font-face {
+          font-family: 'BebasNeue';
+          src: url('../static/graphics/BebasNeue.woff') format('woff');
+      }
+      @font-face {
+          font-family: 'BebasNeueLight';
+          src: url('../static/graphics/BebasNeueLight.woff') format('woff');
+      }
+      @font-face {
+          font-family: 'BebasNeueThin';
+          src: url('../static/graphics/BebasNeueThin.woff') format('woff');
+      }
+      @font-face {
+          font-family: 'RalewayExtraLight';
+          src: url('../static/graphics/RalewayExtraLight.woff') format('woff');
+      }
+
+      h1 { font-family: BebasNeueLight; font-size: 45px; text-align: center;}
+ 
+      p.information {
+            font-family: BebasNeueLight; 
+            font-size: 55px;
+            color: #F1F1F1;
+      }
+
+
+.input {     border: 1px solid #006; }

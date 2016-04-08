@@ -1,0 +1,580 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>AROUND THE WORLD IN 80 DAYS</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="static/graphics/favicon.ico">
+
+    <!-- CSS STYLES -->
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.3/themes/smoothness/jquery-ui.css">
+
+    <link href='http://fonts.googleapis.com/css?family=Raleway:200,400,300,500,600,800' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+
+    <!-- main style sheet -->
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="js/path.js"></script>
+
+
+    <style>
+        /* Visibility modifiers */
+
+        .visible {
+            visibility: visible;
+            opacity: 1;
+            transition: opacity 0.6s ease;
+        }
+
+        .hidden {
+            visibility: hidden;
+            opacity: 0;
+            transition: visibility 0s 0.6s, opacity 0.6s ease;
+        }
+
+
+        /* Splash screen and overlay */
+
+        #splash {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 100%;
+            background-color: #0A0A0A;
+            z-index: 7;
+        }
+
+        #overlay {
+            background-color: #16202E;
+            opacity: 0.65;
+            z-index: 2;
+            width: 100%;
+            height: 100%;
+            position: fixed;
+            top: 0;
+            left: 0;
+            transition: opacity .8s ease-in-out;
+           -moz-transition: opacity .8s ease-in-out;
+           -webkit-transition: opacity .8s ease-in-out;
+        }
+
+
+        /* Fonts and type styles */
+
+        @font-face {
+            font-family: 'BebasNeue';
+            src: url('static/graphics/BebasNeue.woff') format('woff');
+        }
+
+        @font-face {
+            font-family: 'BebasNeueLight';
+            src: url('static/graphics/BebasNeueLight.woff') format('woff');
+        }
+
+        @font-face {
+            font-family: 'BebasNeueThin';
+            src: url('static/graphics/BebasNeueThin.woff') format('woff');
+        }
+
+        span.title {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 200;
+            font-size: 65px;
+            color: #EDEDED;
+            letter-spacing: 2px;
+            text-shadow: 0 0 8px rgba(0, 0, 0, 0.8);
+        }
+
+        span.subtitle {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 600;
+            font-size: 18px;
+            color: #E6E6E6;
+            letter-spacing: 3px;
+            text-shadow: 0 0 4px rgba(0, 0, 0, 0.8);
+        }
+
+        span.footer_text {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 500;
+            font-size: 13px;
+            letter-spacing: 1px;
+            color: #C9C9C9;
+            text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+        }
+
+        p.text {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 300;
+            font-size: 17px;
+            letter-spacing: 1px;
+            color: #EDEDED;
+            text-shadow: 0 0 2px rgba(0, 0, 0, 0.9);
+        }
+
+        span.city_title {
+            font-family: 'Raleway', sans-serif;
+            font-weight: 300;
+            font-size: 50px;
+            letter-spacing: 1px;
+            color: #EDEDED;
+            text-shadow: 0 0 7px rgba(0, 0, 0, 0.4);
+        }
+
+
+        /* Document properties */
+
+        html, body, #map-canvas {
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+            background-color: black;
+        }
+
+
+        /* UI elements */
+        
+        #footer {
+            width: 100%;
+            height: 90px;
+            bottom: 0;
+            position: fixed;
+            z-index: 3;
+        }
+
+        #about {
+            margin-left: 30%;
+            margin-right: 30%;
+            height: 65%;
+            overflow: auto;
+            top: 15%;
+            z-index: 15;
+            position: fixed;
+        }
+
+        #information {
+            z-index: 15;
+            top: 25%;
+            width: 100%;
+            position: absolute;
+        }
+
+        #city_entry {
+            z-index: 4;
+            top: 25%;
+            width: 100%;
+            position: absolute;
+        }
+
+        #city {
+            resize: none;
+            text-transform: uppercase;
+            background-color: transparent;
+            border: none;
+            margin: 0;
+            width: 40%;
+            text-align: left;
+            font-family: 'Raleway', sans-serif;
+            font-size: 30px;
+            font-weight: 300;
+            color: #EDEDED;
+            text-align: center;
+            text-shadow: 0 0 4px rgba(0, 0, 0, 0.4);
+            outline: none;
+        }
+
+        #underline {
+            width: 40%;
+            height: 2px;
+            background-color: #EDEDED;
+            opacity: 0.7;
+        }
+
+        #travel_information {
+            background-color: rgba(0, 0, 0, 0.35);
+            padding: 20px 20px 20px 20px;
+            max-width: 500px;
+            z-index: 15;
+            top: 100px;
+            left: 100px;
+            position: fixed;
+        }
+
+
+        /* Link styling */
+
+        a:link {
+            color: #C9C9C9;
+            text-decoration: none;
+        }
+
+        a:hover {
+            color: #C9C9C9;
+            text-decoration: none;
+            border-bottom: 1px solid #C9C9C9;
+        }
+
+        a:visited {
+            color: #C9C9C9;
+            text-decoration: none;
+        }
+
+        a:active {
+            color: #C9C9C9;
+            text-decoration: none;
+        }
+
+        .colored_link a:link {
+            color: #C2E8FF;
+            text-decoration: none;
+        }
+
+        .colored_link a:hover {
+            color: #C2E8FF;
+            text-decoration: none;
+            border-bottom: 1px solid #C2E8FF;
+        }
+
+        .colored_link a:visited {
+            color: #C2E8FF;
+            text-decoration: none;
+        }
+
+        .colored_link a:active {
+            color: #C2E8FF;
+            text-decoration: none;
+        }
+    </style>
+
+    <!-- for APIs and libraries -->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"></script>
+    <script src="https://code.jquery.com/ui/1.11.3/jquery-ui.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="static/js/largemap.js"></script>
+
+    <script type="text/javascript">
+        var airportCodes = {
+            'New York': 'JFK',
+            'Barcelona': 'BCN',
+            'Edinburgh': 'EDI',
+            'Tokyo': 'HND',
+            'Rome': 'CIA',
+            'Taipei': 'TSA',
+            'Kuala Lumpur': 'KUL',
+            'Montreal': 'YUL',
+            'Puerto Rico': 'PCC',
+            'Bangkok': 'BKK',
+            'Singapore': 'SIN',
+            'Istanbul': 'TAV',
+            'London': 'LHR',
+            'Shanghai': 'PVG',
+            'Amsterdam': 'AMS',
+            'Hong Kong': 'HKG',
+            'Vancouver': 'YVR',
+            'Washington, D.C.': 'IAD',
+            'Rio de Janeiro': 'GIG',
+            'Seoul': 'GMP',
+            'Zurich': 'ZRH',
+            'Riyadh': 'RUH',
+            'Paris': 'CDG',
+            'Vienna': 'VIE',
+            'Sydney': 'SYD',
+            'Milan': 'MXP',
+            'Dubai': 'DXB',
+            'San Francisco': 'SFO',
+            'Los Angeles': 'LAX',
+            'Maui': 'OGG',
+            'Mexico City': 'MEX',
+            'Las Vegas': 'LAS'
+        };
+        var cities = {
+            'JFK': 'New York',
+            'BCN': 'Barcelona',
+            'EDI': 'Edinburgh',
+            'HND': 'Tokyo',
+            'CIA': 'Rome',
+            'TSA': 'Taipei',
+            'KUL': 'Kuala Lumpur',
+            'YUL': 'Montreal',
+            'PCC': 'Puerto Rico',
+            'BKK': 'Bangkok',
+            'SIN': 'Singapore',
+            'TAV': 'Istanbul',
+            'LHR': 'London',
+            'PVG': 'Shanghai',
+            'AMS': 'Amsterdam',
+            'HKG': 'Hong Kong',
+            'YVR': 'Vancouver',
+            'IAD': 'Washington, D.C.',
+            'GIG': 'Rio de Janeiro',
+            'GMP': 'Seoul',
+            'ZRH': 'Zurich',
+            'RUH': 'Riyadh',
+            'CDG': 'Paris',
+            'VIE': 'Vienna',
+            'SYD': 'Sydney',
+            'MXP': 'Milan',
+            'DXB': 'Dubai',
+            'SFO': 'San Francisco',
+            'LAX': 'Los Angeles',
+            'OGG': 'Maui',
+            'MEX': 'Mexico City',
+            'LAS': 'Las Vegas'
+        };
+        var coordinates = {
+            "LAX": new google.maps.LatLng(33.941589, -118.408530),
+            "BKK": new google.maps.LatLng(13.7563309, 100.50176510000006),
+            "LHR": new google.maps.LatLng(51.4700223, -0.4542954999999438),
+            "CDG": new google.maps.LatLng(49.009691, 2.547925),
+            "SIN": new google.maps.LatLng(1.352083, 103.81983600000001),
+            "JFK": new google.maps.LatLng(40.641311, -73.778139),
+            "TAV": new google.maps.LatLng(41.00527, 28.976959999999963),
+            "DXB": new google.maps.LatLng(25.253175, 55.365673),
+            "KUL": new google.maps.LatLng(3.139003, 101.68685499999992),
+            "HKG": new google.maps.LatLng(22.308047, 113.918481),
+            "BCN": new google.maps.LatLng(41.385064, 2.173403),
+            "GMP": new google.maps.LatLng(37.558655, 126.794474),
+            "MXP": new google.maps.LatLng(45.630063, 8.725531),
+            "CIA": new google.maps.LatLng(15.187910, 120.549405),
+            "PVG": new google.maps.LatLng(31.19391, 121.35149100000001),
+            "AMS": new google.maps.LatLng(52.3076865, 4.767424099999971),
+            "HND": new google.maps.LatLng(35.549393, 139.779839),
+            "VIE": new google.maps.LatLng(48.115833, 16.566575000000057),
+            "TSA": new google.maps.LatLng(25.067566, 121.55269900000008),
+            "RUH": new google.maps.LatLng(24.958202, 46.700779),
+            "MEX": new google.maps.LatLng(19.496873, -99.723267),
+            "IAD": new google.maps.LatLng(38.953116, -77.456539),
+            "LAS": new google.maps.LatLng(36.084000, -115.153739),
+            "OGG": new google.maps.LatLng(20.896792, -156.432938),
+            "SFO": new google.maps.LatLng(37.621313, -122.378955),
+            "PCC": new google.maps.LatLng(1.903117, -75.14532600000001),
+            "SYD": new google.maps.LatLng(-33.8674869, 151.20699020000006),
+            "GIG": new google.maps.LatLng(-22.9068467, -43.17289649999998),
+            "YVR": new google.maps.LatLng(49.196691, -123.181512),
+            "EDI": new google.maps.LatLng(55.950785, -3.361453),
+            "ZRH": new google.maps.LatLng(47.458216, 8.555476),
+            "YUL": new google.maps.LatLng(45.469738, -73.744919)
+        };
+
+        function computePath() {
+            // Hide UI elements
+            document.getElementById("information").className = "hidden";
+            document.getElementById("city_entry").className = "hidden";
+            document.getElementById("footer").className = "hidden";
+            var xmlhttp = new XMLHttpRequest();
+            //var url = "/get_path?origin=" + origin.toString() + "&cities_to_visit=" + document.getElementById("#find").value + "&cities_to_avoid=" + document.getElementById("#avoid").value + "&n_cities=" + document.getElementById("#number").value.toString();
+            // var url = "/get_path?origin=" + origin.toString() + "&n_cities=" + document.getElementById("num_cities").value;
+            var origin = document.getElementById("city").value;
+            var url = "/get_path?origin=" + origin.toString() + "&n_cities=" + 20;
+            xmlhttp.onreadystatechange = function () {
+                if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                    if (JSON.parse(xmlhttp.responseText)["error"]) {
+                        // Clear city textarea
+                        document.getElementById("city").value = "";
+                        alert("Sorry, that city isn't in our database! Try a suggested city.");
+                        return;
+                    }
+                    var originUpperCase = JSON.parse(xmlhttp.responseText)["origin_city"].toString().toUpperCase();
+                    var response = JSON.parse(xmlhttp.responseText)["path"];
+                    var duration = JSON.parse(xmlhttp.responseText)["duration"];
+                    var visitedCities = "";
+                    var flightPlanCoordinates = [];
+                    for (var i = 0; i < response.length; i++) {
+                        flightPlanCoordinates[i] = coordinates[response[i]];
+                        if (i >= 1 && i <= response.length - 2) {
+                            visitedCities += cities[response[i]].toString();
+                            if (i != response.length - 2)
+                                visitedCities += ", ";
+                        }
+                        var marker = new google.maps.Marker({
+                            position: coordinates[response[i]],
+                            map: map
+                        });
+                    }
+                    var lineSymbol = {
+                        path: google.maps.SymbolPath.FORWARD_CLOSED_ARROW
+                    };
+                    var flightPath = new google.maps.Polyline({
+                        path: flightPlanCoordinates,
+                        icons: [{
+                            icon: lineSymbol,
+                            offset: '100%'
+                        }],
+                        geodesic: true,
+                        strokeColor: '#BD2A2A',
+                        strokeOpacity: 0.9,
+                        strokeWeight: 1
+                    });
+                    flightPath.setMap(map);
+                    map.setZoom(4);
+                    map.panTo(coordinates[JSON.parse(xmlhttp.responseText)["origin_airport"].toString()]);
+                    // Push overlay to back
+                    document.getElementById("overlay").style.opacity = 0;
+                    setTimeout(function () {
+                        document.getElementById("overlay").style.zIndex = "-1";
+                    }, 800);
+                    // Show travel information and update data accordingly
+                    document.getElementById("flight_duration").innerHTML = "Combined duration of all flights: " + duration + " minutes";
+                    document.getElementById("city_name").innerHTML = originUpperCase;
+                    document.getElementById("visiting_cities").innerHTML = "Visiting cities: " + visitedCities;
+                    document.getElementById("travel_information").className = "visible";
+                }
+            };
+
+            xmlhttp.open("GET", url, true);
+            xmlhttp.send();
+        }
+
+        function getPathUpdateUI() {
+            // Not totally sure why I made a separate function for this
+            computePath();
+        }
+    </script>
+
+    <script type="text/javascript">
+        $(window).load(function () {
+            // Pick a random airport
+            airportCodesList = Object.keys(airportCodes).map(function (key) {
+                return airportCodes[key];
+            });
+            randomAirport = airportCodesList[Math.floor(Math.random() * airportCodesList.length)];
+
+            // Change text field and map center to that airport
+            document.getElementById("city").placeholder = cities[randomAirport];
+            map.panTo(coordinates[randomAirport]);
+        });
+    </script>
+
+    <script type="text/javascript">
+        function revealAbout() {
+            // Hide UI elements
+            document.getElementById("information").className = "hidden";
+            document.getElementById("city_entry").className = "hidden";
+            // Reveal about
+            setTimeout(function () {
+                document.getElementById("about").className = "visible";
+            }, 700);
+        }
+
+        function hideAbout() {
+            // Hide UI elements
+            document.getElementById("about").className = "hidden";
+            // Reveal about
+            setTimeout(function () {
+                document.getElementById("information").className = "visible";
+                document.getElementById("city_entry").className = "visible";
+            }, 700);
+        }
+    </script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#city").keydown(function (e) {
+                // Action on enter key press
+                if (e.keyCode == 13) {
+                    getPathUpdateUI();
+                    return false;
+                }
+            });
+        });
+    </script>
+
+
+    <!-- for loading screen -->
+    <script src="static/js/pace.min.js"></script>
+
+    <!-- JQUERY FUNCTIONS -->
+    <script type="text/javascript">
+        $(window).load(function () {
+            // Fade the splash screen
+            setTimeout(function () {
+                document.getElementById("splash").className = "hidden";
+            }, 1300);
+            // Wait a little bit before sending it backwards
+            setTimeout(function () {
+                document.getElementById("splash").style.zIndex = "-1";
+            }, 1500);
+        });
+
+    </script>
+
+
+    <!-- JAVASCRIPT ENDS -->
+</head>
+
+<body>
+    <!--Splash and overlay-->
+    <div id="splash" class="visible"></div>
+    <div id="overlay"></div>
+
+    <!--Search information-->
+    <div id="information">
+        <center>
+            <div id="title_text">
+                <span class="title">go around the world</span><br/>
+                <span class="subtitle">IN 80 DAYS</span>
+            </div>
+
+        </center>
+    </div>
+
+    <div id="city_entry">
+        <center>
+            <br/><br/><br/><br/><br/><br/><br/><br/>
+
+            <textarea rows="1" id="city" placeholder="Enter a city" autocomplete="off"></textarea>
+
+            <div id="underline"></div>
+        </center>
+    </div>
+
+    <!--About-->
+    <div id="about" class="hidden">
+        <a href="javascript:void(0);" onclick="hideAbout()"><i style="color:#EDEDED;" class="fa fa-times fa-lg"></i></a>
+        <br/><br/>
+
+        <p class="text">Around the World in 80 Days was built in less than 24 hours for HackDFW 2015 by Rice University
+            students Kevin Lin (ELEC/CS '18), Lisa Huang (CS '16), and Abhipray Sahoo (ELEC '16).</p>
+
+        <p class="text">We sought to apply the problem of optimizing path lengths to a literally global scale, with the
+            world's most popular travel desinations. Out of the 30 most visited cities in the world, we constructed a
+            complete, weighted, directed graph of air travel routes from any major city. Using Sabre's travel API, we
+            obtained data on the durations, distances, and costs of over 800 flights, represented in our implementation as
+            the edges of our graph.</p>
+
+        <p class="text">We start with a user-specified origin, and our algorithm, a modified A* graph traversal, determines
+            the best path through the graph that creates a Hamiltonian cycle originating and terminating at that city.
+            Intermediate nodes represent other cities to visit along the route, and given a fixed number of days per city,
+            the iterinerary takes exactly 80 days to complete.</p>
+
+        <p class="text">This project was recognized by Sabre Dev Studio at the event, and our team was awarded a monetary
+            prize for contributing to the developer community.</p>
+
+        <p class="text colored_link">Find us on GitHub <a href="https://github.com/LINKIWI/AroundTheWorldIn80Days">here</a>.</p>
+    </div>
+
+    <!--Travel information-->
+    <div id="travel_information" class="hidden">
+        <span class="footer_text">TRAVELING AROUND THE WORLD FROM</span><br />
+        <span class="city_title" id="city_name">CITY NAME</span><br /><br /><br />
+        <p class="text" id="flight_duration">Combined duration of all flights: minutes</p>
+        <p class="text" id="visiting_cities">Visiting cities: </p>
+        <p class="text colored_link"><a href="/">Start over with another city</a></p>
+    </div>
+
+    <!--Google maps-->
+    <div id="map-canvas"></div>
+
+    <!--Footer-->
+    <div id="footer">
+        <center>
+            <span class="footer_text"><a href="javascript:void(0);" onclick="revealAbout()">ABOUT THE PROJECT</a></span>
+            <br/>
+            <span class="footer_text">KEVIN LIN, LISA HUANG, ABHIPRAY SAHOO | RICE UNIVERSITY AT HACKDFW 2015</span>
+        </center>
+    </div>
+</body>
+</html>

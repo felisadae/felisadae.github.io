@@ -1,0 +1,13 @@
+Flights API
+Key: V1:ed4uz2j814kq7hzq:DEVCENTER:EXT
+
+Application:
+    Around the World in 80 Days 
+Key:
+    V1:ed4uz2j814kq7hzq:DEVCENTER:EXT 
+Shared Secret:
+    Vj6WV9ia 
+Status:
+    active 
+Registered:
+    1 minute ago 

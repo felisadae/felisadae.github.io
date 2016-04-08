@@ -1,0 +1,1 @@
+{'Europe': ['YXU', 'CDG', 'TAV', 'BCN', 'MXP', 'CIA', 'AMS', 'VIE', 'EDI', 'ZRH'], 'NorthAmerica': ['JFK', 'LAX', 'MEX', 'IAD', 'LAS', 'OGG', 'SFO', 'PCC', 'YVR', 'YUL'], 'Australia': ['SYD'], 'Asia': ['BKK', 'SIN', 'DXB', 'KUL', 'HKG', 'GMP', 'PVG', 'HND', 'TSA', 'RUH'], 'SouthAmerica': ['GIG']}
